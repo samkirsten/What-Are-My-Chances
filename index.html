@@ -6,6 +6,14 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="css/single-page.css" rel="stylesheet" media="screen">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.autocomplete.js"></script>
+    <script type="text/javascript">
+   jQuery(document).ready(function($){
+	$('#hospital').autocomplete({source:'php/search.php', minLength:2});
+   });
+    </script>
   </head>
   <body>
   	<div id="wrap">
@@ -23,15 +31,16 @@
   				<div class="span6">
   					<h3 align="left">Enter Your Postcode:</h3>
   					<form class="form-inline">
-  						<input type="text" name="postcode" placeholder="Postcode">
+  						<input type="text" name="postcode" id="postcode" placeholder="Postcode">
   						<input type="submit" value="Go" class="btn-info" id="go_postcode">
   					</form>
   				</div>
   				
+  				
   				<div class="span6" align="right">
   					<h3>Enter Your Local Hospital:</h3>
-  					<form class="form-inline">
-  						<input type="text" name="hospital" placeholder="Local Hospital">
+  					<form class="form-inline" action="php/search.php" method="post">
+  						<input type="text" name="hospital" id="hospital" placeholder="Local Hospital">
   						<input type="submit" value="Go" class="btn-info" id="go_hospital">
   					</form>
   				</div>
@@ -48,16 +57,12 @@
     		Created by Sam Kirsten 2013
     	</p>
     	</div>
-    	
     	<div class="span6">
     		<img src="img/pbg.png" alt="Powered by Google">
     	</div>
-    	
     	</div>
     </div>
     </div>
     
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
