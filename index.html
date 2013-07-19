@@ -4,46 +4,65 @@
     <title>What Are My Chances?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
+    <!--bootstrap specific css & script files-->
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="css/single-page.css" rel="stylesheet" media="screen">
-    <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.autocomplete.js"></script>
-    <script type="text/javascript">
-   jQuery(document).ready(function($){
-	$('#hospital').autocomplete({source:'php/search.php', minLength:2});
-   });
-    </script>
+    <!--J-Query UI specific css & script files-->
+    <link href="css/jquery.autocomplete.css" rel="stylesheet" media="screen">
+    <link href="css/jquery-ui.css" rel="stylesheet" media="screen">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.ui.autocomplete.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    
+    <!--Autocomplete JS Script-->
+  <script type="text/javascript">
+  $(function() {
+	//autocomplete
+	$(".auto").autocomplete({
+		source: "php/search.php",
+		minLength: 2
+	});				
+
+  });
+  </script>
+  
   </head>
+  
   <body>
-  	<div id="wrap">
+  
+  	
+  <div id="wrap">
+  	
   		<div class="container">
   			<div class="leaderboard" align="center">
   				<h1>What Are My Chances?</h1>
   				<br>
   				<h2>Find out the risk of going to your local hospital</h2>
   				<br>
-  				<h3>Please enter your postcode or your local hospital below...</h3>
+  				<h3>Please enter your local hospital below...</h3>
   			</div>
   		</div>
+  		<!--Start of forms for text boxes-->
   		<div class="container">
   			<div class="row">
-  				<div class="span6">
-  					<h3 align="left">Enter Your Postcode:</h3>
+  				
+  				<!-- <div class="span6">
   					<form class="form-inline">
+  						<h3 align="left">Enter Your Postcode:</h3>
   						<input type="text" name="postcode" id="postcode" placeholder="Postcode">
   						<input type="submit" value="Go" class="btn-info" id="go_postcode">
   					</form>
-  				</div>
+  				</div> -->
   				
-  				
-  				<div class="span6" align="right">
-  					<h3>Enter Your Local Hospital:</h3>
-  					<form class="form-inline" action="php/search.php" method="post">
-  						<input type="text" name="hospital" id="hospital" placeholder="Local Hospital">
+  				<div class="span12" align="center">
+  					<form class="form-inline" action="" method="post">
+  						<h3>Enter Your Local Hospital:</h3>
+  						<input type="text" name="hospital" id="hospital" placeholder="Local Hospital" class="auto">
   						<input type="submit" value="Go" class="btn-info" id="go_hospital">
   					</form>
   				</div>
+  				
   			</div>
   		</div>
   	</div>

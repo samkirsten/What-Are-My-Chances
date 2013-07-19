@@ -4365,7 +4365,7 @@ input[type="submit"].btn.btn-mini {
 .navbar {
   *position: relative;
   *z-index: 2;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   overflow: visible;
 }
 
@@ -6006,7 +6006,8 @@ a.badge:focus {
   display: block;
 }
 
-.carousel-inner > .active {
+.carousel-inner > .
+ {
   left: 0;
 }
 
