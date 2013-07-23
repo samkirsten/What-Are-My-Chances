@@ -292,6 +292,13 @@ a:focus {
   width: 940px;
 }
 
+.container-results,
+.navbar-static-top .container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+  width: 1040px;
+}
+
 .span12 {
   width: 940px;
 }
