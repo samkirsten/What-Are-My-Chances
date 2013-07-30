@@ -32,7 +32,7 @@ $hospital = $_POST['hospital']
             </div>
    
        
-        
+      
         <!-- start of main form -->
        
         <div class="hero-unit">
@@ -52,10 +52,10 @@ $hospital = $_POST['hospital']
             </div>
             
             <div class="span4" align="right">
-                <h4>This is a Picture</h4>
+                <img src="/img/tick.svg"></img>
             </div>
           </div>
-          
+          <hr>
           <div class="row-fluid">
             
              <div class="span4" align="left">
@@ -67,11 +67,11 @@ $hospital = $_POST['hospital']
             </div>
             
             <div class="span4" align="right">
-                <h4>This is a Picture</h4>
+                <img src="/img/attention.svg"></img>
             </div>
             
           </div>
-          
+          <hr>
           <div class="row-fluid">
             
             <div class="span4" align="left">
@@ -83,8 +83,9 @@ $hospital = $_POST['hospital']
             </div>
             
             <div class="span4" align="right">
-                <h4>This is a Picture</h4>
+                <img src="/img/cross.svg"></img>
             </div>
+            <hr>
           </div>  
           </div>
           </div>
