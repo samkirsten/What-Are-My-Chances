@@ -28,7 +28,7 @@ $hospital = $_POST['hospital']
 mysql_connect("localhost", "root") or die (mysql_error());
 mysql_select_db("whataremychances") or die (mysql_error());
 
-$data = mysql_query("SELECT * FROM details WHERE hospital='$hospital'") or die(mysql_error());
+$data = mysql_query("SELECT * FROM details WHERE hospital='". mysql_real_escape_string($hospital) . "'") or die(mysql_error());
 $info = mysql_fetch_array( $data );
 
 $mortality = $info['mortality'];
