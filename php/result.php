@@ -4,7 +4,21 @@
         <link href="/css/bootstrap.css" rel="stylesheet" media="screen">
          <script src="/js/jquery.js"></script>
          <script src="/js/bootstrap.min.js"></script>
+         <script src="/js/bootstrap-tooltip.js"></script>
+         <script src="/js/bootstrap-popover.js"></script>
          <link href="/css/single-page.css" rel="stylesheet" media="screen">
+         
+         <script>
+          $(function ()
+          { 
+              $("#popup1").popover({placement:'left'});
+              $("#popup2").popover({placement:'left'});
+              $("#popup3").popover({placement:'left'});
+              $("#popup4").popover({placement:'left'});
+              $("#popup5").popover({placement:'left'});
+          });
+         </script>
+         
     </head>
 <?php
 $hospital = $_POST['hospital']
@@ -37,6 +51,8 @@ $aneresponseav = $info2['a&e-response'];
 
 $counter = 0;
 $rating  = "Unrated";
+
+
 
 if ($inpatient > $inpatientav)
                 {
@@ -79,34 +95,13 @@ if ($counter === 1)
 {
   $rating = "Very Poor";
 }
+
+if ($inpatient == null && $mortality == null && $occupancy == null && $ambresponse == null && $aneresponse == null)
+{
+    $rating = "Unable to Calculate Rating";
+}
+
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -144,7 +139,7 @@ if ($counter === 1)
            <div class="row-fluid">
                 
               <div class="span4" align="left">
-                <h4>In-Patient Rating:</h4>
+                <h4><a href="#" id="popup1" rel="popover" data-content="This is calculated using In-Patient surveys in hospitals" data-original-title"In-Patient Rating":>In-Patient Rating:</a></h4>
               </div>
             
               <div class="span4" align="center">
@@ -152,16 +147,14 @@ if ($counter === 1)
                 if ($inpatient > $inpatientav)
                 {
                     echo "<h4>Above Average</h4>";
-                     
+                }
+                else if ($inpatient == null)
+                {
+                       echo "<h4>No Data Available</h4>";
                 } 
                 else if ($inpatient < $inpatientav)
                 {
                     echo "<h4>Below Average</h4>";
-                   
-                }
-                else 
-                {
-                     echo "<h4>No Data Available</h4>";
                 }
                 ?>
               </div>
@@ -172,13 +165,13 @@ if ($counter === 1)
                 {
                     echo '<img src="/img/tick.svg"></img>';
                 } 
+                else if ($inpatient == null)
+                {
+                       echo '<img src="/img/attention.svg"></img>';
+                } 
                 else if ($inpatient < $inpatientav)
                 {
                     echo '<img src="/img/cross.svg"></img>';
-                }
-                else 
-                {
-                    echo '<img src="/img/attention.svg"></img>';
                 }
                   ?>
                 
@@ -188,13 +181,17 @@ if ($counter === 1)
           
           <div class="row-fluid">
             
-             <div class="span4" align="left">
-                <h4>Death Rates:</h4>
+            <div class="span4" align="left">
+                <h4><a href="#" id="popup2" rel="popover" data-content="This is calculated using the SHMI hospital data from across NHS England" data-original-title"Death Rates":>Death Rates:</a></h4>
             </div>
             
             <div class="span4" align="center">
                 <?php
-                if ($mortality < $mortalityav)
+                if ($mortality == null)
+                    {
+                        echo "<h4>No Data Available</h4>";
+                    }
+                else if ($mortality < $mortalityav)
                 {
                     echo "<h4>Below Average</h4>";
                 }
@@ -202,26 +199,24 @@ if ($counter === 1)
                 {
                     echo "<h4>Above Average</h4>";
                 }
-                else 
-                    {
-                        echo "<h4>No Data Available</h4>";
-                    }
+                
                 ?>
               </div>
             
               <div class="span4" align="right">
                   <?php
-                          if ($mortality < $mortalityav)
+                  if ($mortality == null)
+                    {
+                        echo '<img src="/img/attention.svg"></img>';
+                    }
+                  else if ($mortality < $mortalityav)
                 {
                     echo '<img src="/img/tick.svg"></img>';
                 } 
+                   
                 else if ($mortality > $mortalityav)
                 {
                     echo '<img src="/img/cross.svg"></img>';
-                }
-                else 
-                {
-                    echo '<img src="/img/attention.svg"></img>';
                 }
                   ?>
                 
@@ -233,40 +228,42 @@ if ($counter === 1)
           <div class="row-fluid">
             
             <div class="span4" align="left">
-                <h4>Bed Occupancy:</h4>
+                <h4><a href="#" id="popup3" rel="popover" data-content="This is a measure of how many free beds there are compared to the average per hospital" data-original-title"Bed Occupancy":>Bed Occupancy:</a></h4>
             </div>
             
             <div class="span4" align="center">
                 <?php
-                if ($occupancy < $occupancyav)
+                if ($occupancy == null)
+                    {
+                        echo "<h4>No Data Available</h4>";
+                    }
+                          else if ($occupancy < $occupancyav)
                 {
                     echo "<h4>Below Average</h4>";
                     
                 } 
+                     
                 else if ($occupancy > $occupancyav)
                 {
                     echo "<h4>Above Average</h4>";
                 }
-                else 
-                    {
-                        echo "<h4>No Data Available</h4>";
-                    }
                 ?>
               </div>
             
               <div class="span4" align="right">
                   <?php
-                          if ($occupancy < $occupancyav)
+                if ($occupancy == null)
+                    {
+                        echo '<img src="/img/attention.svg"></img>';
+                    } 
+                else if ($occupancy < $occupancyav)
                 {
                     echo '<img src="/img/tick.svg"></img>';
-                } 
+                }
+                    
                 else if ($occupancy > $occupancyav)
                 {
                     echo '<img src="/img/cross.svg"></img>';
-                }
-                else 
-                {
-                    echo '<img src="/img/attention.svg"></img>';
                 }
                   ?>
                 
@@ -279,7 +276,7 @@ if ($counter === 1)
             <div class="row-fluid">
             
             <div class="span4" align="left">
-                <h4>Ambulance Response (8 Mins):</h4>
+                <h4><a href="#" id="popup4" rel="popover" data-content="How many times an Ambulance will arrive in under 8 minutes compared to the average" data-original-title"Ambulance Response":>Ambulance Response:</a></h4>
             </div>
             
            <div class="span4" align="center">
@@ -289,14 +286,14 @@ if ($counter === 1)
                     echo "<h4>Above Average</h4>";
                     
                 } 
+                   else if ($ambresponse == null)
+                    {
+                        echo "<h4>No Data Available</h4>";
+                    }
                 else if ($ambresponse < $ambresponseav)
                 {
                    echo "<h4>Below Average</h4>";
                 }
-                else 
-                    {
-                        echo "<h4>No Data Available</h4>";
-                    }
                 ?>
               </div>
             
@@ -306,13 +303,13 @@ if ($counter === 1)
                 {
                     echo '<img src="/img/tick.svg"></img>';
                 } 
+                         else if ($ambresponse == null)
+                    {
+                        echo '<img src="/img/attention.svg"></img>';
+                    }
                 else if ($ambresponse < $ambresponseav)
                 {
                     echo '<img src="/img/cross.svg"></img>';
-                }
-                else 
-                {
-                    echo '<img src="/img/attention.svg"></img>';
                 }
                   ?>
                 
@@ -323,7 +320,7 @@ if ($counter === 1)
               <div class="row-fluid">
             
             <div class="span4" align="left">
-                <h4>A&E Response:</h4>
+                <h4><a href="#" id="popup5" rel="popover" data-content="The percentage of people seen under 4 hours in A&E compared with the average" data-original-title"A&E Response:":>A&E Response:</a></h4>
             </div>
             
             <div class="span4" align="center">
@@ -333,14 +330,14 @@ if ($counter === 1)
                     echo "<h4>Above Average</h4>";
                     
                 } 
+                  else if ($aneresponse == null)
+                    {
+                        echo "<h4>No Data Available</h4>";
+                    }
                 else if ($aneresponse < $aneresponseav)
                 {
                     echo "<h4>Below Average</h4>";
                 }
-                else 
-                    {
-                        echo "<h4>No Data Available</h4>";
-                    }
                 ?>
               </div>
             
@@ -350,17 +347,14 @@ if ($counter === 1)
                 {
                     echo '<img src="/img/tick.svg"></img>';
                 } 
+                 else if ($aneresponse == null)
+                    {
+                       echo '<img src="/img/attention.svg"></img>';
+                    }
                 else if ($aneresponse < $aneresponseav)
                 {
                     echo '<img src="/img/cross.svg"></img>';
                 }
-                else 
-                {
-                    echo '<img src="/img/attention.svg"></img>';
-                }
-                
-                
-                
                   ?>
                 
               </div>

@@ -5,7 +5,7 @@ if ( !isset($_REQUEST['term']) )
 	exit;
  
 // connect to the database server and select the appropriate database for use
-$dblink = mysql_connect('localhost', 'root') or die( mysql_error() );
+$dblink = mysql_connect('localhost', 'wamc', 'password1') or die( mysql_error() );
 mysql_select_db('whataremychances');
  
 // query the database table for zip codes that match 'term'
