@@ -7,7 +7,7 @@
     <!--bootstrap specific css & script files-->
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="css/single-page.css" rel="stylesheet" media="screen">
-    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!--J-Query UI specific css & script files-->
     <link href="css/jquery.autocomplete.css" rel="stylesheet" media="screen">
     <link href="css/jquery-ui.css" rel="stylesheet" media="screen">
